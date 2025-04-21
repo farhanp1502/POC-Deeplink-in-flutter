@@ -1,0 +1,4 @@
+flutter:
+  hooks:
+    pre-build:
+      - ./scripts/update_deeplinks.sh
