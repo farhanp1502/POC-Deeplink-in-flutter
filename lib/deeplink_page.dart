@@ -42,7 +42,7 @@ class _DeeplinkPageState extends State<DeeplinkPage> {
         if (path.contains(Constants.projectsPath)){
           final segments = path.split('/');
           final projectId = segments.last;
-          newUrl = '<url>/$projectId';
+          newUrl = 'https://<base-url>/view/project/$projectId';
         }
         else {
           newUrl = null;
