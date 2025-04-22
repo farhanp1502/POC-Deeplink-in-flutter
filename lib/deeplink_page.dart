@@ -42,7 +42,7 @@ class _DeeplinkPageState extends State<DeeplinkPage> {
         if (path.contains(Constants.projectsPath)){
           final segments = path.split('/');
           final projectId = segments.last;
-          newUrl = 'https://dev.elevate-ml.shikshalokam.org/view/project/$projectId';
+          newUrl = '<url>/$projectId';
         }
         else {
           newUrl = null;

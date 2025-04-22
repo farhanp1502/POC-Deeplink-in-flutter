@@ -39,9 +39,26 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   void _setTokenInWebView(String token) {
     _controller.runJavaScript("""
-      localStorage.setItem('auth_token', '$token');
-      console.log('Token set in WebView');
-    """);
+       localStorage.setItem('headers',JSON.stringify({
+       "Cookie": "<value>",
+       "x-auth-token": "<value>",
+       "x-authenticated-user-token": "<value>",
+       "x-channel-id": "<value>",
+       "x-device-id": "<value>",
+       "x-session-id": "<value>"
+     }));
+     localStorage.setItem('name', <value>);
+     localStorage.setItem('accToken',<value>);
+     localStorage.setItem('profileData', JSON.stringify({
+       "state": "<value>",
+       "cluster": "<value>",
+       "district": "<value>",
+       "block": "<value>",
+       "school": "<value>",
+       "role": "<value>"
+     }));
+   """
+);
   }
 
   Future<bool> _onWillPop() async {

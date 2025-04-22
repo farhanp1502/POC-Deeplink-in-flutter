@@ -40,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
     String path = uri.path;
 
     if (path.contains('/view')) {
-      print('Navigating to /view with args: ${uri.queryParameters}');
       Navigator.pushNamed(context, '/view', arguments: {
         'uri': uri.toString(), // Pass full URI as a string
       }).catchError((e) {
@@ -60,9 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // }
 
   void _openWebView() {
-    print('Opening WebView manually');
     Navigator.pushNamed(context, '/webview', arguments: {
-      'url': 'https://dev.elevate-ml.shikshalokam.org/home',
+      'url': '<url>',
       'token': 'sample-auth-token-123',
     }).catchError((e) {
       print('Navigation error for manual /webview: $e');
