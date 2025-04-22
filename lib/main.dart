@@ -23,17 +23,42 @@ class MyApp extends StatelessWidget {
           return DeeplinkPage(
             uri: args?['uri'],
           );
+        },
+        '/webview': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+          return WebViewScreen(
+            url: args['url'],
+            token: args['token'],
+          );
         }
       },
       onGenerateRoute: (settings) {
-        final uri = Uri.parse(settings.name ?? '');
-        if (uri.path == '/view') {
-          return MaterialPageRoute(
-            builder: (context) => DeeplinkPage(
-              uri: uri.toString(),
-            ),
-          );
+        // Handle URI-based deep links
+        if (settings.name != null) {
+          final uri = Uri.parse(settings.name!);
+          if (uri.path == '/view') {
+            return MaterialPageRoute(
+              builder: (context) => DeeplinkPage(
+                uri: uri.toString(),
+              ),
+            );
+          }
+          // Add other URI-based routes here if needed
         }
+
+        // Handle named routes that weren't matched above
+        switch (settings.name) {
+          case '/webview':
+            final args = settings.arguments as Map<String, dynamic>;
+            return MaterialPageRoute(
+              builder: (context) => WebViewScreen(
+                url: args['url'],
+                token: args['token'],
+              ),
+            );
+          // Add other cases here if needed
+        }
+
         return null;
       },
     );
